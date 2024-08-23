@@ -1,43 +1,33 @@
 const fs = require('fs');
-const path = require('path');
-const readline = require('readline');
 
-
-function countStudents(filePath) {
-  // check if th e file exists and if it is a file
-  if (!fs.existsSync(filePath) || !fs.lstatSync(filePath).isFile()) {
+function countStudents(path) {
+  if (!fs.existsSync(path)) {
     throw new Error('Cannot load the database');
   }
 
-  const data = fs.readFileSync(filePath, 'utf8').trim();
+  const data = fs.readFileSync(path, 'utf8');
   const lines = data.split('\n');
-  const header = lines[0].split(',');
-
-  for (const line of students) {
-    if (line.trim() === '') continue;
-
-    const columns = line.split(',');
-
-    if (columns.length < 4) {
-      console.error('Skipping line due to incorrect format:', line);
-      continue;
+  const hashtable = {};
+  let students = -1;
+  for (const line of lines) {
+    if (line.trim() !== '') {
+      const columns = line.split(',');
+      const field = columns[3];
+      const firstname = columns[0];
+      if (students >= 0) {
+        if (!Object.hasOwnProperty.call(hashtable, field)) {
+          hashtable[field] = [];
+        }
+        hashtable[field] = [...hashtable[field], firstname];
+      }
+      students += 1;
     }
-
-    const firstname = columns[0];
-    const field = columns[3].trim();
-
-    if (!hashtable[field]) {
-      hashtable[field] = [];
-    }
-
-    hashtable[field].push(firstname);
   }
-
-  const totalStudents = students.length;
-
-  console.log(`Number of students: ${totalStudents}`);
-  for (const [field, names] of Object.entries(hashtable)) {
-    console.log(`Number of students in ${field}: ${names.length}. List: ${names.join(', ')}`);
+  console.log(`Number of students: ${students}`);
+  for (const key in hashtable) {
+    if (Object.hasOwnProperty.call(hashtable, key)) {
+      console.log(`Number of students in ${key}: ${hashtable[key].length}. List: ${hashtable[key].join(', ')}`);
+    }
   }
 }
 
