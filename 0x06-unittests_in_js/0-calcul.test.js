@@ -3,10 +3,10 @@ const calculateNumber = require("./0-calcul.js");
 
 describe("calculation Number",() => {
   it("checks equality", () => {
-    assert.strictEqual(calculateNumber(-1, -3), -4);
+    assert.strictEqual(calculateNumber(-1, -2.7), -4);
   });
 
   it("checks equality with float nbr", () => {
-    assert.strictEqual(calculateNumber(1, 3.7), 5);
+    assert.strictEqual(calculateNumber(1.7, 3), 5);
   });
 });
