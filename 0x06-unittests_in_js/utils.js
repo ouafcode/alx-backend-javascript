@@ -9,11 +9,11 @@ const Utils = {
       case 'SUBTRACT':
         return a - b;
       case 'DIVIDE':
-        return b != 0 ? a / b : 'Error';
+        return b !== 0 ? a / b : 'Error';
       default:
         return 'Error';
     }
- }
+  }
 };
 
 module.exports = Utils;
