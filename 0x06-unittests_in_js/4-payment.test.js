@@ -11,7 +11,7 @@ describe('sendPaymentRequestToApi', () => {
     sendPaymentRequestToApi(100, 20);
 
     sinon.assert.calledWith(stub, 'SUM', 100, 20);
-    sinon.assert.calledWidth(spy, 'The total is: 10');
+    sinon.assert.calledWith(spy, 'The total is: 10');
 
     stub.restore();
     spy.restore();
