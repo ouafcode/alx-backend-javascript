@@ -1,23 +1,20 @@
 const assert = require("assert");
-const calculateNumber = require("./0-calcul.js");
+const calculateNumber = require("./1-calcul.js");
 
-describe("test Type=SUM",() => {
-  it("checks equality", () => {
-    assert.strictEqual(calculateNumber('SUM', -1.7, -2), -4);
+describe("test cases",() => {
+  it("checks equality SUM", () => {
+    assert.strictEqual(calculateNumber('SUM', 1.4, 4.5), 6);
   });
-});
 
-describe("test Type=SUBTRACT",() => {
-  it("checks equality", () => {
+  it("checks equality SUBTRACT", () => {
     assert.strictEqual(calculateNumber('SUBTRACT', 1.4, 4.5), -4);
   });
-});
 
-describe("test Type=DIVIDE",() => {
-  it("checks equality", () => {
+  it("checks equality DIVIDE", () => {
     assert.strictEqual(calculateNumber('DIVIDE', 1.4, 4.5), 0.2);
   });
-  it("checks error", () => {
+
+  it("checks error DIVIDE", () => {
     assert.strictEqual(calculateNumber('DIVIDE', 1.4, 0), 'Error');
   });
 });
