@@ -1,24 +1,24 @@
 const sinon =  require('sinon');
 const sendPaymentRequestToApi = require('./5-payment.js');
 
-describe('sendPaymentRequestToApi', () => {
-  let Zspy;
+describe('sendPaymentRequestToApi', function () {
+  let SSpy;
 
-  beforeEach(function() {
-    Zspy = sinon.spy(console, 'log');
+  beforeEach(function () {
+    SSpy = sinon.spy(console, 'log');
   });
 
-  afterEach(function() {
-    Zspy.restore();
+  afterEach(function () {
+    SSpy.restore();
   });
 
-  it('check for the console logging is 120', () => {
-    sendPaymentRequestToAPI(100, 20);
-    sinon.assert.calledOnceWithExactly(Zspy, 'The total is: 120');
+  it('should log "The total is: 120" for inputs 100 and 20', function () {
+    sendPaymentRequestToApi(100, 20);
+    sinon.assert.calledOnceWithExactly(SSpy, 'The total is: 120');
   });
 
-  it('check for the console logging is 20', () => {
-    sendPaymentRequestToAPI(10, 10);
-    sinon.assert.calledOnceWithExactly(Zspy, 'The total is: 20');
-  }); 
+  it('should log "The total is: 20" for inputs 10 and 10', function () {
+    sendPaymentRequestToApi(10, 10);
+    sinon.assert.calledOnceWithExactly(SSpy, 'The total is: 20');
+  });
 });
