@@ -1,7 +1,7 @@
 const request = require('request');
 const { expect } = require('chai');
 
-describe('Index page', function () {
+describe('Cart page', function () {
   it('should return status code 200', function (done) {
     request.get('http://localhost:7865', function (error, response, body) {
       expect(response.statusCode).to.equal(200);
